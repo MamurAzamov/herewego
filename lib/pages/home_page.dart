@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   Future _callCreatePage() async {
     Map results = await Navigator.of(context)
         .push(MaterialPageRoute(builder: (BuildContext context) {
-      return CreatePage();
+      return const CreatePage();
     }));
     if (results != null && results.containsKey("data")) {
       print(results['data']);
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home"),
+        title: const Text("All Posts"),
         actions: [
           IconButton(
               onPressed: (){
@@ -114,10 +114,17 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       child: Container(
-        padding: const EdgeInsets.all(20),
-        child: Column(
+        padding: const EdgeInsets.all(15),
+        child:  Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Container(
+              width: double.infinity,
+              height: 200,
+              child: post.img_url != null ? Image.network(post.img_url!, fit: BoxFit.cover,) :
+              Image.asset('assets/images/default-image.jpg'),
+            ),
+            const SizedBox(height: 15,),
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

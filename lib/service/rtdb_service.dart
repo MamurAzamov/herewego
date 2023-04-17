@@ -21,7 +21,9 @@ class RTDBService {
     for (var child in snapshot.children) {
       var jsonPost = jsonEncode(child.value);
       Map<String, dynamic> map = jsonDecode(jsonPost);
-      var post = Post(firstname: map['firstname'], lastname: map['lastname'], data: map['data'], content: map['content'], userId: map['userId']);
+      var post = Post(
+          firstname: map['firstname'], lastname: map['lastname'],
+          data: map['data'], content: map['content'], img_url: map['img_url'], userId: map['userId']);
       items.add(post);
     }
     return items;
